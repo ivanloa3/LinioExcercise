@@ -93,7 +93,7 @@ extension FavoritesCollectionViewModel{
         case 1:
             return "ndIc30PlusSquare"
         case 2:
-            return "ndIc30Plus48Square.pdf"
+            return "ndIc30Plus48Square"
         default:
             return "ERROR"
         }
