@@ -41,6 +41,7 @@ class CollectionView: UIView {
         
         
         self.viewModel = FavoritesCollectionViewModel()
+        
         self.viewModel.fetchCollections {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

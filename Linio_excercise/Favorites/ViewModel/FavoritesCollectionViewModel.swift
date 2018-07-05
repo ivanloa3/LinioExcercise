@@ -16,7 +16,7 @@ class FavoritesCollectionViewModel{
     let service = Service()
 
     func fetchCollections(completion: @escaping () -> ()){
-        service.fetchData(completion:{ (data) in
+        service.fetchData_alamofire(completion:{ (data) in
             self.collections = data
             self.fetchProducts()
             completion()

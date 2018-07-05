@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Product {
     
@@ -22,19 +23,34 @@ class Product {
     private var Imported: Bool!
     private var Active: Bool!
     
-    init(dictionary: [String:Any]){
+//    init(dictionary: [String:Any]){
+//        
+//        self.Id = dictionary["id"]! as! Int
+//        self.Name = dictionary["name"]! as! String
+//        self.WishListPrice = dictionary["wishListPrice"]! as! Int
+//        self.Slug = dictionary["slug"]! as! String
+//        self.Url = dictionary["url"]! as! String
+//        self.Image = dictionary["image"]! as! String
+//        self.LinioPlusLevel = dictionary["linioPlusLevel"] as! Int
+//        self.ConditionType = dictionary["conditionType"] as! String
+//        self.FreeShipping = dictionary["freeShipping"] as! Bool
+//        self.Imported = dictionary["imported"] as! Bool
+//        self.Active = dictionary["active"] as! Bool
+//    }
+    
+    init(json: JSON) {
+        self.Id = json["id"].int
+        self.Name = json["name"].stringValue
+        self.WishListPrice = json["wishListPrice"].int
+        self.Slug = json["slug"].stringValue
+        self.Url = json["url"].stringValue
+        self.Image = json["image"].stringValue
+        self.LinioPlusLevel = json["linioPlusLevel"].int
+        self.ConditionType = json["conditionType"].stringValue
+        self.FreeShipping = json["freeShipping"].bool
+        self.Imported = json["imported"].bool
+        self.Active = json["active"].bool
         
-        self.Id = dictionary["id"]! as! Int
-        self.Name = dictionary["name"]! as! String
-        self.WishListPrice = dictionary["wishListPrice"]! as! Int
-        self.Slug = dictionary["slug"]! as! String
-        self.Url = dictionary["url"]! as! String
-        self.Image = dictionary["image"]! as! String
-        self.LinioPlusLevel = dictionary["linioPlusLevel"] as! Int
-        self.ConditionType = dictionary["conditionType"] as! String
-        self.FreeShipping = dictionary["freeShipping"] as! Bool
-        self.Imported = dictionary["imported"] as! Bool
-        self.Active = dictionary["active"] as! Bool
     }
     
     var id: Int{

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Collection {
     
@@ -15,19 +16,31 @@ class Collection {
     private var Description: String!
     private var Products = [Product]()
     
-    init(dictionary: [String:Any]) {
+//    init(dictionary: [String:Any]) {
+//        
+//        self.Id = dictionary["id"]! as! Int
+//        self.Name = dictionary["name"]! as! String
+//        self.Description = dictionary["description"]! as! String
+//        
+//        let temp_products = dictionary["products"] as! [String:Any]
+//        let keys = temp_products.keys
+//        
+//        for key in keys{
+//            let product_values = temp_products[key] as! [String:Any]
+//            let product = Product(dictionary: product_values)
+//            self.Products.append(product)
+//        }
+//    }
+    
+    init(json: JSON) {
+        self.Id = json["id"].int
+        self.Name = json["name"].stringValue
+        self.Description = json["description"].stringValue
+        let products = json["products"].dictionaryValue
         
-        self.Id = dictionary["id"]! as! Int
-        self.Name = dictionary["name"]! as! String
-        self.Description = dictionary["description"]! as! String
-        
-        let temp_products = dictionary["products"] as! [String:Any]
-        let keys = temp_products.keys
-        
-        for key in keys{
-            let product_values = temp_products[key] as! [String:Any]
-            let product = Product(dictionary: product_values)
-            self.Products.append(product)
+        for product in products{
+            let value = product.value
+            self.Products.append(Product(json: value))
         }
     }
     
